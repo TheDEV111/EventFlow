@@ -150,6 +150,10 @@
   (var-set platform-revenue (+ (var-get platform-revenue) amount))
 )
 
+(define-private (max (a uint) (b uint))
+  (if (> a b) a b)
+)
+
 ;; ====================================
 ;; Public Functions
 ;; ====================================
@@ -184,8 +188,8 @@
         config: config,
         is-public: is-public,
         is-active: true,
-        created-at: block-height,
-        updated-at: block-height,
+        created-at: stacks-block-height,
+        updated-at: stacks-block-height,
         version: u1
       }
     )
@@ -196,7 +200,7 @@
       {
         total-updates: u0,
         total-transfers: u0,
-        last-accessed: block-height
+        last-accessed: stacks-block-height
       }
     )
     
@@ -237,7 +241,7 @@
         name: name,
         description: description,
         config: config,
-        updated-at: block-height,
+        updated-at: stacks-block-height,
         version: (+ (get version workflow) u1)
       })
     )
@@ -247,12 +251,12 @@
       { workflow-id: workflow-id }
       (merge 
         (default-to 
-          { total-updates: u0, total-transfers: u0, last-accessed: block-height }
+          { total-updates: u0, total-transfers: u0, last-accessed: stacks-block-height }
           (map-get? workflow-stats { workflow-id: workflow-id })
         )
         { 
           total-updates: (+ (default-to u0 (get total-updates (map-get? workflow-stats { workflow-id: workflow-id }))) u1),
-          last-accessed: block-height 
+          last-accessed: stacks-block-height 
         }
       )
     )
@@ -279,7 +283,7 @@
       { workflow-id: workflow-id }
       (merge workflow {
         is-public: (not (get is-public workflow)),
-        updated-at: block-height
+        updated-at: stacks-block-height
       })
     )
     
@@ -314,7 +318,7 @@
       { workflow-id: workflow-id }
       (merge workflow {
         owner: new-owner,
-        updated-at: block-height
+        updated-at: stacks-block-height
       })
     )
     
@@ -327,12 +331,12 @@
       { workflow-id: workflow-id }
       (merge 
         (default-to 
-          { total-updates: u0, total-transfers: u0, last-accessed: block-height }
+          { total-updates: u0, total-transfers: u0, last-accessed: stacks-block-height }
           (map-get? workflow-stats { workflow-id: workflow-id })
         )
         { 
           total-transfers: (+ (default-to u0 (get total-transfers (map-get? workflow-stats { workflow-id: workflow-id }))) u1),
-          last-accessed: block-height 
+          last-accessed: stacks-block-height 
         }
       )
     )
@@ -355,7 +359,7 @@
       { workflow-id: workflow-id }
       (merge workflow {
         is-active: false,
-        updated-at: block-height
+        updated-at: stacks-block-height
       })
     )
     
@@ -373,7 +377,7 @@
     ;; Set premium status
     (map-set premium-users
       { user: caller }
-      { is-premium: true, activated-at: block-height }
+      { is-premium: true, activated-at: stacks-block-height }
     )
     
     (ok true)

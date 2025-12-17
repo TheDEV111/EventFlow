@@ -124,7 +124,7 @@
 ;; ====================================
 
 (define-private (get-current-period-key)
-  (/ block-height blocks-per-month)
+  (/ stacks-block-height blocks-per-month)
 )
 
 (define-private (calculate-tier-price (tier uint) (duration uint))
@@ -152,7 +152,7 @@
     subscription
       (and 
         (get is-active subscription)
-        (>= (get end-block subscription) block-height)
+        (>= (get end-block subscription) stacks-block-height)
       )
     false
   )
@@ -228,7 +228,7 @@
   (let (
     (caller tx-sender)
     (price (calculate-tier-price tier duration))
-    (end-block (+ block-height (* duration blocks-per-month)))
+    (end-block (+ stacks-block-height (* duration blocks-per-month)))
   )
     ;; Validations
     (asserts! (or (is-eq tier tier-pro) (is-eq tier tier-enterprise)) err-invalid-tier)
@@ -263,7 +263,7 @@
       { user: caller }
       {
         tier: tier,
-        start-block: block-height,
+        start-block: stacks-block-height,
         end-block: end-block,
         auto-renew: false,
         is-active: true,
@@ -273,7 +273,7 @@
     
     ;; Record history
     (record-subscription-history 
-      caller tier block-height end-block price u"active"
+      caller tier stacks-block-height end-block price u"active"
     )
     
     (var-set total-subscriptions (+ (var-get total-subscriptions) u1))
@@ -308,7 +308,7 @@
     
     ;; Record history
     (record-subscription-history 
-      caller tier block-height 
+      caller tier stacks-block-height 
       (+ (get end-block subscription) blocks-per-month)
       price u"renewed"
     )
@@ -323,7 +323,7 @@
     (caller tx-sender)
     (subscription (unwrap! (map-get? subscriptions { user: caller }) err-not-subscribed))
     (current-tier (get tier subscription))
-    (remaining-blocks (- (get end-block subscription) block-height))
+    (remaining-blocks (- (get end-block subscription) stacks-block-height))
     (old-price (calculate-tier-price current-tier u1))
     (new-price (calculate-tier-price new-tier u1))
     (price-diff (+ (- new-price old-price) upgrade-fee))
@@ -347,7 +347,7 @@
     
     ;; Record history
     (record-subscription-history 
-      caller new-tier block-height (get end-block subscription) 
+      caller new-tier stacks-block-height (get end-block subscription) 
       price-diff u"upgraded"
     )
     
@@ -360,7 +360,7 @@
   (let (
     (caller tx-sender)
     (subscription (unwrap! (map-get? subscriptions { user: caller }) err-not-subscribed))
-    (remaining-blocks (- (get end-block subscription) block-height))
+    (remaining-blocks (- (get end-block subscription) stacks-block-height))
     (tier (get tier subscription))
     (monthly-price (calculate-tier-price tier u1))
     (remaining-value (/ (* monthly-price remaining-blocks) blocks-per-month))
@@ -381,13 +381,13 @@
       { user: caller }
       (merge subscription {
         is-active: false,
-        end-block: block-height
+        end-block: stacks-block-height
       })
     )
     
     ;; Record history
     (record-subscription-history 
-      caller tier (get start-block subscription) block-height 
+      caller tier (get start-block subscription) stacks-block-height 
       refund u"cancelled"
     )
     
@@ -403,13 +403,13 @@
   )
     ;; Validations
     (asserts! (get is-active subscription) err-not-subscribed)
-    (asserts! (> pause-until block-height) err-invalid-duration)
+    (asserts! (> pause-until stacks-block-height) err-invalid-duration)
     
     ;; Extend end date by pause duration
     (map-set subscriptions
       { user: caller }
       (merge subscription {
-        end-block: (+ (get end-block subscription) (- pause-until block-height))
+        end-block: (+ (get end-block subscription) (- pause-until stacks-block-height))
       })
     )
     
@@ -512,7 +512,7 @@
     (balance (unwrap! (map-get? credit-balances { user: user }) err-not-found))
     (period-key (get-current-period-key))
     (usage (default-to 
-      { events-used: u0, credits-consumed: u0, last-reset: block-height }
+      { events-used: u0, credits-consumed: u0, last-reset: stacks-block-height }
       (map-get? usage-tracking { user: user, period-key: period-key })
     ))
   )
@@ -533,7 +533,7 @@
       {
         events-used: (+ (get events-used usage) u1),
         credits-consumed: (+ (get credits-consumed usage) amount),
-        last-reset: block-height
+        last-reset: stacks-block-height
       }
     )
     
@@ -558,7 +558,7 @@
         code: code,
         total-referrals: u0,
         total-earnings: u0,
-        created-at: block-height
+        created-at: stacks-block-height
       }
     )
     
