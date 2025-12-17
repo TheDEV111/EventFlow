@@ -201,7 +201,7 @@ export function EventFlowWordmark({ className = "", size = "md" }: { className?:
       className={`flex items-center gap-3 ${className}`}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.6 }}
     >
       <EventFlowLogo size={size === "sm" ? 32 : size === "md" ? 48 : 64} />
       <motion.div

@@ -12,14 +12,14 @@ import {
   trueCV,
   falseCV,
 } from "@stacks/transactions";
-import { StacksMainnet, StacksTestnet } from "@stacks/network";
+import { STACKS_MAINNET, STACKS_TESTNET } from "@stacks/network";
 import config from "@/lib/config/client";
 
 // Network configuration
 export const getNetwork = () => {
   return config.stacksNetwork === "mainnet"
-    ? new StacksMainnet()
-    : new StacksTestnet();
+    ? STACKS_MAINNET
+    : STACKS_TESTNET;
 };
 
 // Contract identifiers
@@ -52,7 +52,7 @@ export async function registerWorkflow(
     network,
     anchorMode: AnchorMode.Any,
     postConditionMode: PostConditionMode.Deny,
-    fee: 10000n,
+    fee: 10000,
   };
 
   return txOptions;
@@ -82,7 +82,7 @@ export async function updateWorkflow(
     network,
     anchorMode: AnchorMode.Any,
     postConditionMode: PostConditionMode.Deny,
-    fee: 5000n,
+    fee: 10000,
   };
 
   return txOptions;
@@ -104,7 +104,7 @@ export async function toggleWorkflowStatus(
     network,
     anchorMode: AnchorMode.Any,
     postConditionMode: PostConditionMode.Deny,
-    fee: 5000n,
+    fee: 10000,
   };
 
   return txOptions;
@@ -126,7 +126,7 @@ export async function unlockPremium(
     network,
     anchorMode: AnchorMode.Any,
     postConditionMode: PostConditionMode.Deny,
-    fee: 5000n,
+    fee: 10000,
   };
 
   return txOptions;
@@ -155,7 +155,7 @@ export async function processEvent(
     network,
     anchorMode: AnchorMode.Any,
     postConditionMode: PostConditionMode.Deny,
-    fee: 10000n,
+    fee: 10000,
   };
 
   return txOptions;
@@ -183,7 +183,7 @@ export async function addAction(
     network,
     anchorMode: AnchorMode.Any,
     postConditionMode: PostConditionMode.Deny,
-    fee: 5000n,
+    fee: 10000,
   };
 
   return txOptions;
@@ -206,7 +206,7 @@ export async function subscribe(
     network,
     anchorMode: AnchorMode.Any,
     postConditionMode: PostConditionMode.Deny,
-    fee: 5000n,
+    fee: 10000,
   };
 
   return txOptions;
@@ -228,7 +228,7 @@ export async function purchaseCredits(
     network,
     anchorMode: AnchorMode.Any,
     postConditionMode: PostConditionMode.Deny,
-    fee: 5000n,
+    fee: 10000,
   };
 
   return txOptions;
