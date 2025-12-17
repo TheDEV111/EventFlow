@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@hirosystems/chainhooks-client':
+        specifier: ^1.0.0
+        version: 1.0.0(@sinclair/typebox@0.34.41)
       '@radix-ui/react-slot':
         specifier: ^1.2.3
         version: 1.2.3(@types/react@19.2.2)(react@19.1.0)
@@ -17,6 +20,9 @@ importers:
       '@stacks/network':
         specifier: ^7.2.0
         version: 7.2.0
+      '@stacks/stacks-blockchain-api-types':
+        specifier: ^7.14.1
+        version: 7.14.1
       '@stacks/transactions':
         specifier: ^7.2.0
         version: 7.2.0
@@ -26,6 +32,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      framer-motion:
+        specifier: ^12.23.26
+        version: 12.23.26(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       lucide-react:
         specifier: ^0.544.0
         version: 0.544.0(react@19.1.0)
@@ -137,6 +146,11 @@ packages:
 
   '@emnapi/runtime@1.6.0':
     resolution: {integrity: sha512-obtUmAHTMjll499P+D9A3axeJFlhdjOWdKUNs/U6QIGT7V5RjcUW1xToAzjvmgTSQhDbYn/NwfTRoJcQ2rNBxA==}
+
+  '@hirosystems/chainhooks-client@1.0.0':
+    resolution: {integrity: sha512-xPp/2ATix/KS0Nbclh4ckq6UGK8Kb0+d3s2K5LzpS6jeUxpTjuF0++M4KmGSMRMThoo33v9IuMRQyK8wPb8Tgg==}
+    peerDependencies:
+      '@sinclair/typebox': ^0.34.33
 
   '@img/colour@1.0.0':
     resolution: {integrity: sha512-A5P/LfWGFSl6nsckYtjw9da+19jB8hkJ6ACTGcDfEJ0aE+l2n2El7dsVM7UVHZQ9s2lmYMWlrS21YLy2IR1LUw==}
@@ -487,6 +501,9 @@ packages:
   '@scure/bip39@1.6.0':
     resolution: {integrity: sha512-+lF0BbLiJNwVlev4eKelw1WWLaiKXw7sSl8T6FvBlWkdX+94aGJ4o8XjUdlyhTCjd8c+B3KT3JfS8P0bLRNU6A==}
 
+  '@sinclair/typebox@0.34.41':
+    resolution: {integrity: sha512-6gS8pZzSXdyRHTIqoqSVknxolr1kzfy4/CeDnrzsVz8TTIWUbOBr6gnzOmTYJ3eXQNh4IYHIGi5aIL7sOZ2G/g==}
+
   '@stacks/common@6.16.0':
     resolution: {integrity: sha512-PnzvhrdGRMVZvxTulitlYafSK4l02gPCBBoI9QEoTqgSnv62oaOXhYAUUkTMFKxdHW1seVEwZsrahuXiZPIAwg==}
 
@@ -507,6 +524,9 @@ packages:
 
   '@stacks/profile@7.2.0':
     resolution: {integrity: sha512-pzPgn/NpmjA7TdeA5U9OjXLwBNqGPrjWhsMy/ZC3iUdnIUvthgWwlPpydgQOTJaRqaDMdY24hFgT+og6QbyQQA==}
+
+  '@stacks/stacks-blockchain-api-types@7.14.1':
+    resolution: {integrity: sha512-65hvhXxC+EUqHJAQsqlBCqXB+zwfxZICSKYJugdg6BCp9I9qniyfz5XyQeC4RMVo0tgEoRdS/b5ZCFo5kLWmxA==}
 
   '@stacks/transactions@6.17.0':
     resolution: {integrity: sha512-FUah2BRgV66ApLcEXGNGhwyFTRXqX5Zco3LpiM3essw8PF0NQlHwwdPgtDko5RfrJl3LhGXXe/30nwsfNnB3+g==}
@@ -1012,6 +1032,20 @@ packages:
     resolution: {integrity: sha512-dKx12eRCVIzqCxFGplyFKJMPvLEWgmNtUrpTiJIR5u97zEhRG8ySrtboPHZXx7daLxQVrl643cTzbab2tkQjxg==}
     engines: {node: '>= 0.4'}
 
+  framer-motion@12.23.26:
+    resolution: {integrity: sha512-cPcIhgR42xBn1Uj+PzOyheMtZ73H927+uWPDVhUMqxy8UHt6Okavb6xIz9J/phFUHUj0OncR6UvMfJTXoc/LKA==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
 
@@ -1219,6 +1253,12 @@ packages:
 
   minimalistic-crypto-utils@1.0.1:
     resolution: {integrity: sha512-JIYlbt6g8i5jKfJ3xz7rF0LXmv2TkDxBLUkiBeZ7bAx4GnnNMr8xFpGnOxn6GhTEHx3SjRrZEoU+j04prX1ktg==}
+
+  motion-dom@12.23.23:
+    resolution: {integrity: sha512-n5yolOs0TQQBRUFImrRfs/+6X4p3Q4n1dUEqt/H58Vx7OW6RF+foWEgmTVDhIWJIMXOuNNL0apKH2S16en9eiA==}
+
+  motion-utils@12.23.6:
+    resolution: {integrity: sha512-eAWoPgr4eFEOFfg2WjIsMoqJTW6Z8MTUCgn/GZ3VRpClWBdnbjryiA3ZSNLyxCTmCQx4RmYX6jX1iWHbenUPNQ==}
 
   multiformats@9.9.0:
     resolution: {integrity: sha512-HoMUjhH9T8DDBNT+6xzkrd9ga/XiBI4xLr58LJACwK6G3HTOPeMz4nB4KJs33L2BelrIJa7P0VuNaVF3hMYfjg==}
@@ -1815,6 +1855,10 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
+  '@hirosystems/chainhooks-client@1.0.0(@sinclair/typebox@0.34.41)':
+    dependencies:
+      '@sinclair/typebox': 0.34.41
+
   '@img/colour@1.0.0':
     optional: true
 
@@ -2385,6 +2429,8 @@ snapshots:
       '@noble/hashes': 1.8.0
       '@scure/base': 1.2.6
 
+  '@sinclair/typebox@0.34.41': {}
+
   '@stacks/common@6.16.0':
     dependencies:
       '@types/bn.js': 5.2.0
@@ -2461,6 +2507,8 @@ snapshots:
       zone-file: 2.0.0-beta.3
     transitivePeerDependencies:
       - encoding
+
+  '@stacks/stacks-blockchain-api-types@7.14.1': {}
 
   '@stacks/transactions@6.17.0':
     dependencies:
@@ -3272,6 +3320,15 @@ snapshots:
       is-callable: 1.2.7
     optional: true
 
+  framer-motion@12.23.26(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+    dependencies:
+      motion-dom: 12.23.23
+      motion-utils: 12.23.6
+      tslib: 2.8.1
+    optionalDependencies:
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
+
   function-bind@1.1.2:
     optional: true
 
@@ -3493,6 +3550,12 @@ snapshots:
 
   minimalistic-crypto-utils@1.0.1:
     optional: true
+
+  motion-dom@12.23.23:
+    dependencies:
+      motion-utils: 12.23.6
+
+  motion-utils@12.23.6: {}
 
   multiformats@9.9.0: {}
 
