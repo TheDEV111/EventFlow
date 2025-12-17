@@ -1,13 +1,21 @@
 [project]
 name = "event-flow-smart-contract"
-description = ""
-authors = []
+description = "EventFlow - Real-Time Stacks Blockchain Event Platform Smart Contracts"
+authors = ["EventFlow Team"]
 telemetry = true
 cache_dir = "./.cache"
 
-# [contracts.counter]
-# path = "contracts/counter.clar"
-# epoch = "latest"
+[contracts.workflow-registry]
+path = "contracts/workflow-registry.clar"
+epoch = "3.0"
+
+[contracts.event-processor]
+path = "contracts/event-processor.clar"
+epoch = "3.0"
+
+[contracts.subscription-manager]
+path = "contracts/subscription-manager.clar"
+epoch = "3.0"
 
 [repl.analysis]
 passes = ["check_checker"]
