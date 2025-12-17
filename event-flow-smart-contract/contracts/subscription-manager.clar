@@ -124,7 +124,7 @@
 ;; ====================================
 
 (define-private (get-current-period-key)
-  (/ block-height blocks-per-month)
+  (/ stacks-block-height blocks-per-month)
 )
 
 (define-private (calculate-tier-price (tier uint) (duration uint))
@@ -263,7 +263,7 @@
       { user: caller }
       {
         tier: tier,
-        start-block: block-height,
+        start-block: stacks-block-height,
         end-block: end-block,
         auto-renew: false,
         is-active: true,
@@ -381,7 +381,7 @@
       { user: caller }
       (merge subscription {
         is-active: false,
-        end-block: block-height
+        end-block: stacks-block-height
       })
     )
     
@@ -512,7 +512,7 @@
     (balance (unwrap! (map-get? credit-balances { user: user }) err-not-found))
     (period-key (get-current-period-key))
     (usage (default-to 
-      { events-used: u0, credits-consumed: u0, last-reset: block-height }
+      { events-used: u0, credits-consumed: u0, last-reset: stacks-block-height }
       (map-get? usage-tracking { user: user, period-key: period-key })
     ))
   )
@@ -533,7 +533,7 @@
       {
         events-used: (+ (get events-used usage) u1),
         credits-consumed: (+ (get credits-consumed usage) amount),
-        last-reset: block-height
+        last-reset: stacks-block-height
       }
     )
     
@@ -558,7 +558,7 @@
         code: code,
         total-referrals: u0,
         total-earnings: u0,
-        created-at: block-height
+        created-at: stacks-block-height
       }
     )
     

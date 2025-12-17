@@ -109,7 +109,7 @@
 ;; ====================================
 
 (define-private (get-hour-key)
-  (/ block-height u144) ;; Approximately 1 hour (144 blocks)
+  (/ stacks-block-height u144) ;; Approximately 1 hour (144 blocks)
 )
 
 (define-private (check-rate-limit (workflow-id uint))
@@ -178,7 +178,7 @@
           (get fail-count current-stats)
           (+ (get fail-count current-stats) u1)
         ),
-        last-processed: block-height,
+        last-processed: stacks-block-height,
         total-fees-paid: (+ (get total-fees-paid current-stats) fee)
       }
     )
@@ -209,7 +209,7 @@
         workflow-id: workflow-id,
         action-type: action-type,
         target: target,
-        executed-at: block-height,
+        executed-at: stacks-block-height,
         success: success,
         result: result
       }
@@ -251,8 +251,8 @@
       { event-hash: event-hash }
       {
         workflow-id: workflow-id,
-        processed-at: block-height,
-        block-height: block-height,
+        processed-at: stacks-block-height,
+        block-height: stacks-block-height,
         tx-hash: tx-hash,
         event-type: event-type,
         success: true
@@ -326,8 +326,8 @@
           { event-hash: event-hash }
           {
             workflow-id: (get workflow-id accumulator),
-            processed-at: block-height,
-            block-height: block-height,
+            processed-at: stacks-block-height,
+            block-height: stacks-block-height,
             tx-hash: (get tx-hash event),
             event-type: (get event-type event),
             success: true
@@ -445,7 +445,7 @@
         workflow-id: workflow-id,
         payload: payload,
         retry-count: u0,
-        last-retry: block-height,
+        last-retry: stacks-block-height,
         error-code: error-code
       }
     )
