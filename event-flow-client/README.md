@@ -1,239 +1,215 @@
-# Stacks Next.js Template
+# EventFlow Frontend
 
-A modern Next.js 15 template for building Stacks blockchain applications with TypeScript, Tailwind CSS, and comprehensive tooling.
+![EventFlow](https://img.shields.io/badge/EventFlow-Blockchain_Automation-blue?style=for-the-badge)
+![Next.js](https://img.shields.io/badge/Next.js-15.5-black?style=for-the-badge&logo=next.js)
+![Stacks](https://img.shields.io/badge/Stacks-Mainnet-purple?style=for-the-badge)
 
-## 🚀 Features
+**🚀 Event-driven blockchain automation platform built on Stacks**
 
-- **Next.js 15** with App Router and Turbopack
-- **TypeScript** with strict configuration
-- **Tailwind CSS** for styling
-- **Stacks Integration** with wallet connection
-- **Component Library** built on Radix UI
-- **Biome** for linting and formatting
-- **Environment Configuratin** with Zod validation
+## ✨ Features
 
-## 📦 Tech Stack
+- **Workflow Management**: Create, edit, and manage blockchain event workflows
+- **Real-time Event Monitoring**: Live event tracking via Chainhooks integration  
+- **Subscription System**: Tiered plans with STX payments
+- **Beautiful UI**: Modern interface with Framer Motion animations
+- **Smart Contract Integration**: Direct integration with mainnet contracts
+- **Responsive Design**: Works on desktop and mobile
 
-- **Framework**: Next.js 15 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: Radix UI + CVA
-- **Blockchain**: Stacks Connect
-- **Linting**: Biome
+## 🛠️ Tech Stack
 
-## 🛠️ Getting Started
+- **Next.js 15.5** - React framework with App Router
+- **TypeScript** - Type-safe development
+- **Tailwind CSS 4.0** - Utility-first styling
+- **shadcn/ui** - Beautiful component library
+- **Framer Motion** - Smooth animations
+- **Stacks blockchain** - Mainnet deployed contracts
+- **Chainhooks** - Real-time event streaming
 
-### Prerequisites
+## 🚀 Quick Start
 
-- Node.js 18+ 
-- pnpm (recommended) or npm
-- Git
+```bash
+# Install dependencies
+pnpm install
 
-### Installation
+# Run development server
+pnpm dev
 
-1. **Clone the template**
-   ```bash
-   git clone <your-repo-url>
-   cd stacks-next-template
-   ```
+# Open http://localhost:3000
+```
 
-2. **Install dependencies**
-   ```bash
-   pnpm install
-   # or
-   npm install
-   ```
+## 🔧 Environment Setup
 
-3. **Set up environment variables**
-   ```bash
-   cp .env.example .env.local
-   ```
-   
-   Edit `.env.local` with your configuration:
-   ```env
-   NEXT_PUBLIC_APP_NAME="Your App Name"
-   ```
+Create `.env.local`:
 
-4. **Start the development server**
-   ```bash
-   pnpm dev
-   # or
-   npm run dev
-   ```
+```env
+NEXT_PUBLIC_APP_NAME=EventFlow
+NEXT_PUBLIC_STACKS_NETWORK=mainnet
+NEXT_PUBLIC_CONTRACT_ADDRESS=SPVQ61FEWR6M4HVAT3BNE07D4BNW6A1C2ACCNQ6F
+NEXT_PUBLIC_WORKFLOW_REGISTRY=workflow-registry
+NEXT_PUBLIC_EVENT_PROCESSOR=event-processor
+NEXT_PUBLIC_SUBSCRIPTION_MANAGER=subscription-manager
+```
 
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## 🏗️ Project Structure
+## 📁 Project Structure
 
 ```
-├── app/                    # Next.js App Router
+event-flow-client/
+├── app/                    # Next.js pages
 │   ├── layout.tsx         # Root layout
-│   ├── page.tsx           # Home page
+│   ├── page.tsx           # Dashboard
 │   └── globals.css        # Global styles
-├── components/            # Reusable components
-│   └── ui/               # Base UI components
-├── hooks/                # Custom React hooks
-├── lib/                  # Utilities and configuration
-│   └── config/          # Environment configuration
-├── providers/           # React context providers
-└── .cursor/rules/       # Cursor AI rules
+├── components/            # React components
+│   ├── logo.tsx          # EventFlow logo
+│   ├── workflow-card.tsx # Workflow cards
+│   ├── event-item.tsx    # Event items
+│   └── subscription-card.tsx # Plans
+├── lib/                  # Utilities
+│   ├── contracts.ts      # Contract functions
+│   └── types.ts          # TypeScript types
+└── providers/            # Context providers
+    ├── chainhook-provider.tsx
+    └── auth-session-provider.tsx
 ```
 
-## 🔧 Development
+## 🎯 Smart Contracts
 
-### Available Scripts
+### Mainnet Contracts
+```
+Address: SPVQ61FEWR6M4HVAT3BNE07D4BNW6A1C2ACCNQ6F
+
+- workflow-registry      (Workflow management)
+- event-processor        (Event processing)
+- subscription-manager   (Subscriptions & credits)
+```
+
+### Contract Functions
+
+**Workflow Registry**
+- `register-workflow` - Create workflow (10 STX)
+- `update-workflow` - Update details (5 STX)
+- `toggle-workflow-status` - Enable/disable (1 STX)
+- `unlock-premium` - Premium features (50 STX)
+
+**Event Processor**
+- `process-event` - Process single event (0.1 STX)
+- `batch-process-events` - Process multiple (0.05 STX each)
+- `add-action` - Add workflow action (5 STX)
+
+**Subscription Manager**
+- `subscribe` - Subscribe to tier (20-100 STX)
+- `purchase-credits` - Buy credits (0.001 STX each)
+- `transfer-credits` - Transfer to another user
+
+## 💎 Subscription Tiers
+
+| Tier | Price | Events | Features |
+|------|-------|--------|----------|
+| **Starter** | 20 STX | 1,000/mo | Basic workflows, Email notifications |
+| **Pro** ⭐ | 50 STX | 5,000/mo | Premium workflows, Priority support, API |
+| **Enterprise** | 100 STX | 20,000/mo | Unlimited workflows, 24/7 support, SLA |
+
+## 🎨 Design System
+
+### Color Palette
+- Primary: `#3b82f6` (Blue)
+- Secondary: `#a855f7` (Purple)  
+- Accent: `#ec4899` (Pink)
+- Success: `#22c55e` (Green)
+- Warning: `#eab308` (Yellow)
+- Error: `#ef4444` (Red)
+
+### Animations
+- Page transitions with stagger effects
+- Hover lift on cards
+- Pulsing status indicators
+- Smooth gradient animations
+
+## 🔌 Chainhooks Integration
+
+Real-time blockchain event monitoring:
+
+```typescript
+import { useChainhooks } from "@/providers/chainhook-provider";
+
+function MyComponent() {
+  const { events, subscribeToWorkflow } = useChainhooks();
+  
+  useEffect(() => {
+    subscribeToWorkflow(workflowId);
+  }, [workflowId]);
+  
+  return events.map(event => <EventItem event={event} />);
+}
+```
+
+## 🧪 Development
 
 ```bash
 # Development
-pnpm dev          # Start development server with Turbopack
-pnpm build        # Build for production
-pnpm start        # Start production server
+pnpm dev
 
-# Code Quality
-pnpm lint         # Run Biome linter
-pnpm format       # Format code with Biome
+# Build
+pnpm build
+
+# Production
+pnpm start
+
+# Lint
+pnpm lint
+
+# Format
+pnpm format
 ```
-
-### Wallet Integration
-
-The template includes a complete wallet integration system:
-
-```typescript
-// Use the wallet hook in your components
-import { useWallet } from "@/hooks/wallet";
-
-export function WalletButton() {
-  const { data, isConnected, connect, disconnect } = useWallet();
-  
-  if (isConnected) {
-    return (
-      <div>
-        <p>Connected: {data?.address}</p>
-        <button onClick={disconnect}>Disconnect</button>
-      </div>
-    );
-  }
-  
-  return <button onClick={connect}>Connect Wallet</button>;
-}
-```
-
-### Session Management
-
-Authentication state is managed through React Context:
-
-```typescript
-import { useAuthSession } from "@/providers/auth-session-provider";
-
-export function UserProfile() {
-  const { session, loading } = useAuthSession();
-  
-  if (loading) return <div>Loading...</div>;
-  if (!session) return <div>Please connect your wallet</div>;
-  
-  return <div>Welcome, {session.user.walletAddress}</div>;
-}
-```
-
-## 🎨 UI Components
-
-The template includes a comprehensive component library:
-
-```typescript
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-
-export function ExampleComponent() {
-  return (
-    <Card>
-      <Input placeholder="Enter your name" />
-      <Button variant="default">Submit</Button>
-    </Card>
-  );
-}
-```
-
-### Available Components
-
-- **Button** - Multiple variants (default, destructive, outline, etc.)
-- **Card** - Container component
-- **Input** - Form input component
-
-## 🌐 Environment Configuration
-
-The template uses Zod for environment variable validation:
-
-### Client Configuration
-```typescript
-// lib/config/client.ts
-export const envSchema = z.object({
-  NEXT_PUBLIC_APP_NAME: z.string().default("Stacks Next Template"),
-});
-```
-
-### Server Configuration
-```typescript
-// lib/config/server.ts
-const envSchema = z.object({}).extend(clientEnvSchema.shape);
-```
-
-## 🎯 Best Practices
-
-### Code Quality
-- Use TypeScript strict mode
-- Follow the established patterns in the codebase
-- Run `pnpm lint` before committing
-- Use proper error handling
-
-### Component Development
-- Use functional components with hooks
-- Implement proper TypeScript interfaces
-- Follow the component library patterns
-- Include accessibility attributes
-
-### Wallet Integration
-- Always check connection state before transactions
-- Implement proper error handling
-- Use the provided session management
-- Validate wallet responses
 
 ## 🚀 Deployment
 
-### Build for Production
-
+### Vercel (Recommended)
 ```bash
-pnpm build
+vercel
 ```
 
-### Deploy to Vercel
+### Environment Variables
+Set all `NEXT_PUBLIC_*` variables in your deployment platform.
 
-1. Push to GitHub
-2. Connect to Vercel
-3. Set environment variables
-4. Deploy
+## 📱 Responsive Breakpoints
 
-### Deploy to Other Platforms
+- **Desktop**: 1920px+
+- **Laptop**: 1280px - 1920px
+- **Tablet**: 768px - 1280px
+- **Mobile**: 320px - 768px
 
-The template works with any platform that supports Next.js:
-- Netlify
-- AWS Amplify
-- Railway
-- Render
+## 🔐 Security
 
-## 📚 Additional Resources
+- ✅ No private keys stored
+- ✅ Wallet signature required for transactions
+- ✅ Read-only functions for public data
+- ✅ Environment variables for config
+- ✅ HTTPS only in production
 
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Stacks Documentation](https://docs.stacks.co)
-- [Tailwind CSS](https://tailwindcss.com/docs)
-- [Radix UI](https://www.radix-ui.com)
+## 📚 Resources
+
+- [Stacks Docs](https://docs.stacks.co)
+- [Next.js Docs](https://nextjs.org/docs)
+- [shadcn/ui](https://ui.shadcn.com)
+- [Framer Motion](https://www.framer.com/motion)
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests and linting
-5. Submit a pull request
+1. Fork the repo
+2. Create feature branch (`git checkout -b feature/amazing`)
+3. Commit changes (`git commit -m 'Add feature'`)
+4. Push branch (`git push origin feature/amazing`)
+5. Open Pull Request
 
-**Happy building! 🚀**
+## 📄 License
+
+MIT License - see LICENSE file
+
+## 🔗 Links
+
+- **Explorer**: [View Contracts](https://explorer.hiro.so/address/SPVQ61FEWR6M4HVAT3BNE07D4BNW6A1C2ACCNQ6F?chain=mainnet)
+- **GitHub**: [EventFlow Repo](https://github.com/TheDEV111/EventFlow)
+
+---
+
+**Built with ❤️ on Stacks • EventFlow © 2025**

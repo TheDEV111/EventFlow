@@ -17,7 +17,6 @@ export function EventFlowLogo({ size = 40, animate = true, className = "" }: Eve
       opacity: 1,
       transition: {
         duration: 0.5,
-        ease: "easeOut",
       },
     },
   };
@@ -41,7 +40,6 @@ export function EventFlowLogo({ size = 40, animate = true, className = "" }: Eve
       opacity: 1,
       transition: {
         duration: 1.5,
-        ease: "easeInOut",
       },
     },
   };
